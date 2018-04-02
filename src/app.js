@@ -14,7 +14,7 @@ const bot = new TelegramBot(token, {
 //   bot.sendMessage(chatId, 'Received your message');
 // });
 
-bot.onText(/ON?/, (msg) => {
+bot.onText(/ON\?/i, (msg) => {
   const chatId = msg.chat.id;
   bot.sendMessage(chatId, `Yes, I'm here!`);
 });
