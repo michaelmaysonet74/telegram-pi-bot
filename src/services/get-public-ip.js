@@ -6,4 +6,4 @@ const getPublicIp = () => {
 	}).catch((e) => e);
 };
 
-module.exports = getPublicIp; 
+module.exports = getPublicIp;
