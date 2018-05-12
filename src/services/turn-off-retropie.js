@@ -1,3 +1,5 @@
+'use strict';
+
 const nodeSSH = require('node-ssh');
 const ssh = new nodeSSH();
 
