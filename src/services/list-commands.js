@@ -1,14 +1,13 @@
 'use strict';
 
-function listCommands(commands) {
-	let success_msg = 'You can use the following commands:\n';
-	return new Promise((resolve, reject) => {
-		for (command in commands) {
-			success_msg += command.replace(/\_/g, ' ') + '\n';
-		}
+const _commands = require('../commands.js');
 
-		return resolve(success_msg);
-	});
+const listCommands = () => {
+  let success_msg = 'You can use the following commands:\n';
+  for (let command in _commands) {
+    success_msg += command.replace(/\_/g, ' ') + '\n';
+  }
+  return Promise.resolve(success_msg);
 }
 
 module.exports = listCommands;
