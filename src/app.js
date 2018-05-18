@@ -7,7 +7,6 @@ const _commands = require('./commands.js');
 const listCommands = require('./services/list-commands.js');
 const getPublicIp = require('./services/get-public-ip.js');
 const turnRetropieOff = require('./services/turn-off-retropie.js');
-const pivpn = require('./services/pivpn.js');
 
 const token = process.env.TELEGRAM_TOKEN;
 const bot = new TelegramBot(token, { polling: true });
@@ -41,20 +40,4 @@ bot.onText(_commands.retropie_off, (msg) => {
   turnRetropieOff().then((success_msg) => {
   	bot.sendMessage(chatId, success_msg);
   });
-});
-
-bot.onText(_commands.list_vpn_clients, (msg) => {
-	const chatId = msg.chat.id;
-
-	pivpn.listClients().then((success_msg) => {
-		bot.sendMessage(chatId, success_msg);
-	}).catch(e => bot.sendMessage(chatId, e));
-});
-
-bot.onText(_commands.list_vpn_certs, (msg) => {
-	const chatId = msg.chat.id;
-
-	pivpn.listCerts().then((success_msg) => {
-		bot.sendMessage(chatId, success_msg);
-	}).catch(e => bot.sendMessage(chatId, e));
 });
