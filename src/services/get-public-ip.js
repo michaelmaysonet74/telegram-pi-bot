@@ -1,11 +1,9 @@
-'use strict';
-
 const axios = require('axios');
 
-const getPublicIp = () => {
-	return axios.get('https://ipinfo.io/json').then((res) => {
-		return res.data.ip;
-	}).catch((e) => e);
-};
+const getPublicIp = () => (
+    axios.get('https://ipinfo.io/json')
+        .then((res) => res.data.ip)
+        .catch((e) => e)
+);
 
 module.exports = getPublicIp;
