@@ -1,9 +1,6 @@
 const axios = require('axios');
 
-const getPublicIp = () => (
-    axios.get('https://ipinfo.io/json')
-        .then((res) => res.data.ip)
-        .catch((e) => e)
-);
+const getPublicIp = async () =>
+    await axios.get('https://ipinfo.io/json')?.data?.id;
 
 module.exports = getPublicIp;
